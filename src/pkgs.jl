@@ -147,6 +147,7 @@ maybe_extract_sigs!(pkgdata::PkgData, file::AbstractString) = maybe_extract_sigs
 
 function maybe_add_includes_to_pkgdata!(pkgdata::PkgData, file::AbstractString, includes; eval_now::Bool=false)
     for (mod, inc) in includes
+        @show inc
         inc = joinpath(splitdir(file)[1], inc)
         incrp = relpath(inc, pkgdata)
         hasfile = false
