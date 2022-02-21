@@ -988,7 +988,7 @@ they will not be automatically tracked.
 """
 function includet(mod::Module, file)
     prev = Base.source_path(nothing)
-    if prev === nothing
+    if prev === nothing || !(file isa AbstractString)
         file = abspath(file)
     else
         file = normpath(joinpath(dirname(prev), file))
